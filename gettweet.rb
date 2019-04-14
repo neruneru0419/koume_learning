@@ -4,10 +4,10 @@ require "yahoo_keyphrase_api"
 require "./api"
 
 @client = Twitter::REST::Client.new do |config|
-  config.consumer_key    = MY_CONSUMER_KEY
-  config.consumer_secret = MY_CONSUMER_SECRET
-  config.access_token    = MY_ACCESS_TOKEN
-  config.access_token_secret = MY_ACCESS_TOKEN_SECRET
+  config.consumer_key    = ENV['MY_CONSUMER_KEY']
+  config.consumer_secret = ENV['MY_CONSUMER_SECRET']
+  config.access_token    = ENV['MY_ACCESS_TOKEN']
+  config.access_token_secret = ENV['MY_ACCESS_TOKEN_SECRET']
 end
 
 def tweet_cut(str)
@@ -22,7 +22,7 @@ def tweet_cut(str)
 end
 
 def ext(target_word)
-  YahooKeyphraseApi::Config.app_id = YAHOO_API_TOKEN
+  YahooKeyphraseApi::Config.app_id = ENV['YAHOO_API_TOKEN']
   ykp = YahooKeyphraseApi::KeyPhrase.new
   begin
     phrases = ykp.extract(target_word)
