@@ -1,7 +1,6 @@
 require "twitter"
 require 'natto'
 require "yahoo_keyphrase_api"
-require "./api"
 
 @client = Twitter::REST::Client.new do |config|
   config.consumer_key    = ENV['MY_CONSUMER_KEY']
